@@ -1,0 +1,123 @@
+body {
+    background-color: #fff; /* Белый фон для страницы */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Вертикальная ориентация */
+    height: 100vh;
+    touch-action: manipulation;
+}
+
+.game-container {
+    position: relative; /* Для позиционирования псевдоэлемента */
+    overflow: hidden; /* Обрезать содержимое, выходящее за границы */
+    width: 100%; /* Для мобильных устройств */
+    max-width: 300px; /* Максимальная ширина для больших экранов */
+    height: auto; /* Высота будет зависеть от ширины */
+    aspect-ratio: 3 / 5; /* Соотношение сторон */
+    background-color: #000; /* Черный фон для игрового поля */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8); /* Увеличенная и более темная тень */
+    margin: 0 auto; /* Центрирование контейнера */
+}
+
+.game-container::before {
+    content: '';
+    position: absolute;
+    top: -20px; /* Увеличиваем верхний отступ */
+    left: -20px; /* Увеличиваем левый отступ */
+    right: -20px; /* Увеличиваем правый отступ */
+    bottom: -20px; /* Увеличиваем нижний отступ */
+    border: 40px solid transparent; /* Увеличенная прозрачная рамка */
+    border-radius: 12px; /* Закругленные углы */
+    background-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000); /* Градиент с цветами RGB */
+    background-size: 400%; /* Для анимации */
+    animation: borderAnimation 3s linear infinite; /* Быстрая анимация */
+    z-index: 1; /* Поднимаем выше */
+    pointer-events: none; /* Игнорируем события мыши */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* Эффект свечения */
+}
+
+@keyframes borderAnimation {
+    0% { background-position: 0% 50%; }
+    12.5% { background-position: 25% 50%; }
+    25% { background-position: 50% 50%; }
+    37.5% { background-position: 75% 50%; }
+    50% { background-position: 100% 50%; }
+    62.5% { background-position: 75% 50%; }
+    75% { background-position: 50% 50%; }
+    87.5% { background-position: 25% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+canvas {
+    width: 100%; /* Отображение по ширине контейнера */
+    height: auto; /* Высота будет определяться автоматически */
+    position: relative; /* Чтобы канвас находился под псевдоэлементом */
+    z-index: 2; /* Поднимаем ниже псевдоэлемента */
+}
+
+.controls {
+    display: flex;
+    justify-content: center; /* Центрирование кнопок */
+    margin-top: 10px; /* Отступ между игровым полем и кнопками */
+}
+
+.control-button {
+    min-width: 70px; /* Минимальная ширина кнопки */
+    min-height: 50px; /* Минимальная высота кнопки */
+    margin: 5px; /* Отступ между кнопками */
+    font-size: 18px; /* Размер текста */
+    background-color: #007bff; /* Цвет кнопки */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор в виде указателя */
+    transition: background-color 0.3s; /* Плавный переход цвета кнопки */
+}
+
+.control-button:hover {
+    background-color: #0056b3; /* Цвет кнопки при наведении */
+}
+
+.title {
+    font-size: 48px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: transparent; /* Цвет текста изначально прозрачный */
+    background-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff); /* Градиент */
+    background-clip: text; /* Клип текста для градиента */
+    -webkit-background-clip: text; /* Для поддержки WebKit */
+    animation: textAnimation 3s linear infinite; /* Анимация для изменения цвета */
+    text-align: center; /* Центрирование текста */
+    margin-bottom: 20px; /* Отступ между заголовком и игровым полем */
+}
+
+@keyframes textAnimation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.developer-message {
+    font-size: 18px; /* Уменьшен размер текста */
+    font-weight: bold;
+    text-align: center;
+    animation: rainbow 10s infinite linear; /* Убедитесь, что анимация включена */
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    14% { color: #ff7f00; }
+    28% { color: #ffff00; }
+    42% { color: #00ff00; }
+    57% { color: #00ffff; }
+    71% { color: #0000ff; }
+    85% { color: #4b0082; }
+    100% { color: #9400d3; }
+}
+
+@media (max-width: 768px) {
+    .developer-message {
+        font-size: 16px; /* Уменьшение размера для мобильных */
+        animation: rainbow 10s infinite linear; /* Убедитесь, что анимация включена */
+    }
+}

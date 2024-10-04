@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .letter {
+            display: inline-block;
+        }
+
+        #tetris {
+            background-color: black;
+        }
+
+        .message {
+            color: white;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container text-center">
+        <div class="title">
+            <span class="letter" style="color: #ff0000;">T</span>
+            <span class="letter" style="color: #ff7f00;">e</span>
+            <span class="letter" style="color: #ffff00;">t</span>
+            <span class="letter" style="color: #00ff00;">r</span>
+            <span class="letter" style="color: #00ffff;">i</span>
+            <span class="letter" style="color: #0000ff;">s</span>
+        </div>
+        <div class="game-container">
+            <canvas id="tetris" width="240" height="400"></canvas>
+        </div>
+
+        <!-- Сообщение для игрока -->
+        <div id="message" class="message">
+            Для начала игры нажмите 'Старт'.
+        </div>
+
+        <div class="controls d-flex justify-content-center mt-3">
+            <button id="left" class="control-button btn btn-primary">←</button>
+            <button id="down" class="control-button btn btn-primary">↓</button>
+            <button id="right" class="control-button btn btn-primary">→</button>
+            <button id="rotate" class="control-button btn btn-primary">🔃</button>
+            <button id="start" class="control-button btn btn-success">Старт</button>
+        </div>
+    </div>
+    <div class="developer-message mt-4">
+            Developed by everysoularemine
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
